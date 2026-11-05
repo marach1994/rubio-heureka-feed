@@ -1,0 +1,34 @@
+# =============================================================================
+# Heuréka feed Rubiomonocoat.cz — doplnění <SPECIAL_SERVICE>
+#
+# Skript stáhne Heuréka feed ze Shoptetu, ke každému produktu přidá služby
+# podle pravidel níže a uloží nový feed. Zbytek feedu zůstává beze změny.
+# Heuréka: max. 5 služeb na produkt, každá max. 128 znaků.
+# https://sluzby.heureka.cz/napoveda/xml-feed/#SPECIAL_SERVICE
+# =============================================================================
+
+feed_url: "https://www.rubiomonocoat.cz/heureka/export/products.xml"
+output: "output/heureka.xml"
+
+# Služby pro všechny produkty
+services_all:
+  - "Speciální velkoobchodní slevy"
+  - "Vzorkování zdarma pro váš projekt"
+
+# Služby jen pro produkty, jejichž CATEGORYTEXT obsahuje daný text
+# (přidají se k services_all). Příklad:
+# services_by_category:
+#   "Oleje na dřevo":
+#     - "Odborné poradenství zdarma"
+services_by_category: {}
+
+# Služby pro konkrétní ITEM_ID (přidají se k ostatním). Příklad:
+# services_by_item:
+#   "R001631":
+#     - "Míchání odstínu na míru"
+services_by_item: {}
+
+# Produkty, kterým se žádná služba nepřidá (ITEM_ID nebo text v CATEGORYTEXT)
+skip_items: []
+skip_categories:
+  - "ŠKOLENÍ"
